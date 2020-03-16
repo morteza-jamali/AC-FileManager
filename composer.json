@@ -1,0 +1,26 @@
+{
+    "name": "acide/acfile",
+    "version": "1.0.0",
+    "type": "library",
+    "description": "This is ACIDE project file manager library",
+    "keywords": ["acide" , "acfile" , "file manager"],
+    "homepage": "https://github.com/morteza-jamali/acfile",
+    "authors": [
+        {
+            "name": "Morteza Jamali",
+            "email": "mortezajamali4241@gmail.com",
+            "homepage": "https://abricoder.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ACFile\\": ""
+        }
+    } ,
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
