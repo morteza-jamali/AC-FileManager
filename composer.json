@@ -2,6 +2,7 @@
     "name": "acide/acfile",
     "version": "1.0.0",
     "type": "library",
+    "license" : "CC0 1.0 Universal" ,
     "description": "This is ACIDE project file manager library",
     "keywords": ["acide" , "acfile" , "file manager"],
     "homepage": "https://github.com/morteza-jamali/acfile",
@@ -21,6 +22,5 @@
             "ACFile\\": ""
         }
     } ,
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "minimum-stability": "dev"
 }
