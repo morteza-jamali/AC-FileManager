@@ -151,5 +151,29 @@
             $path = rtrim($path , '/');
             return rtrim($path , '\\');
         }
+
+        private static $directories = [];
+        private static $tree = [];
+        public static function getDirectoryTree($path) {
+            self::$directories[$path] = 'true';
+            $files = self::getFiles($path);
+            $dirs = self::getDirectories($path);
+            if(!isset(self::$tree[$path]) && !empty($dirs) && !empty($files)) {
+                self::$tree[$path] = [];
+            }
+            foreach ($files as $file) {
+                self::$tree[$path][$file] = 'file';
+            }
+            foreach ($dirs as $dir) {
+                self::$tree[$path][$dir] = 'directory';
+                self::$directories[$dir] = 'false';
+            }
+            foreach (self::$directories as $directory => $status) {
+                if($status === 'false') {
+                    self::getDirectoryTree($directory);
+                }
+            }
+            return self::$tree;
+        }
     }
 ?>

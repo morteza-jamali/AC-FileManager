@@ -86,7 +86,7 @@ File::getFiles($path , $order)
 
 Method | Description | Return
 -------|-------------|-------
-getFiles() | Lists all files in a path | Array
+getFiles | Lists all files in a path | Array
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -99,7 +99,7 @@ File::getDirectories($path , $order)
 
 Method | Description | Return
 -------|-------------|-------
-getDirectories() | Lists all directories in a path | Array
+getDirectories | Lists all directories in a path | Array
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -112,7 +112,7 @@ File::deleteFile($path)
 
 Method | Description | Return
 -------|-------------|-------
-deleteFile() | Delete file if exists | Boolean
+deleteFile | Delete file if exists | Boolean
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -124,7 +124,7 @@ File::deleteDirectory($path)
 
 Method | Description | Return
 -------|-------------|-------
-deleteDirectory() | Delete a folder with its content | Boolean
+deleteDirectory | Delete a folder with its content | Boolean
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -136,7 +136,7 @@ File::emptyDirectory($path)
 
 Method | Description | Return
 -------|-------------|-------
-emptyDirectory() | Delete all files and directories from directory | Boolean
+emptyDirectory | Delete all files and directories from directory | Boolean
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -148,7 +148,7 @@ File::makeDirectory($path , $mode)
 
 Method | Description | Return
 -------|-------------|-------
-makeDirectory() | Creates a directory | Boolean
+makeDirectory | Creates a directory | Boolean
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -163,7 +163,7 @@ File::addFileContent($path , $content , $mode)
 
 Method | Description | Return
 -------|-------------|-------
-addFileContent() | Add content to a file | Boolean
+addFileContent | Add content to a file | Boolean
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -189,7 +189,7 @@ File::copyDirectoryRecursively($from , $to)
 
 Method | Description | Return
 -------|-------------|-------
-copyDirectoryRecursively() | Copies directory recursively |
+copyDirectoryRecursively | Copies directory recursively |
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -202,7 +202,7 @@ File::copyFile($from , $to)
 
 Method | Description | Return
 -------|-------------|-------
-copyFile() | Copies file content | Boolean
+copyFile | Copies file content | Boolean
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -215,7 +215,7 @@ File::rename($parent_path , $old_name , $new_name)
 
 Method | Description | Return
 -------|-------------|-------
-rename() | Renames a file | Boolean
+rename | Renames a file | Boolean
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -243,7 +243,7 @@ File::moveFile($from_dir , $to_dir , $name)
 
 Method | Description | Return
 -------|-------------|-------
-moveFile() | Moves file to another directory | Boolean
+moveFile | Moves file to another directory | Boolean
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -271,7 +271,7 @@ File::moveDirectory($from_dir , $to_dir , $dir)
 
 Method | Description | Return
 -------|-------------|-------
-moveDirectory() | Moves directory | Boolean
+moveDirectory | Moves directory | Boolean
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -285,7 +285,7 @@ File::isFileEmpty($path)
 
 Method | Description | Return
 -------|-------------|-------
-isFileEmpty() | Check if file is empty | Boolean
+isFileEmpty | Check if file is empty | Boolean
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -297,7 +297,7 @@ File::isDirectoryEmpty($path)
 
 Method | Description | Return
 -------|-------------|-------
-isDirectoryEmpty() | Check if directory is empty | Boolean
+isDirectoryEmpty | Check if directory is empty | Boolean
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -309,7 +309,7 @@ File::cleanPath($path)
 
 Method | Description | Return
 -------|-------------|-------
-cleanPath() | Removes last / and \ from path | String
+cleanPath | Removes last / and \ from path | String
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
@@ -324,6 +324,18 @@ echo $result;
 ```
 
 Result is `path/tmp`
+
+```php
+File::getDirectoryTree($path)
+```
+
+Method | Description | Return
+-------|-------------|-------
+getDirectoryTree | Get all files and directories | Array
+
+Attribute | Description | Type | Required | Default
+----------|-------------|------|----------|---------
+$path | Directory path | String | Yes |
 
 ## License
 
