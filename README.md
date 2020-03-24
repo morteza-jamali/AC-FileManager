@@ -337,6 +337,18 @@ Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
 $path | Directory path | String | Yes |
 
+```php
+File::getBaseName($path)
+```
+
+Method | Description | Return
+-------|-------------|-------
+getBaseName | Get path base name | String
+
+Attribute | Description | Type | Required | Default
+----------|-------------|------|----------|---------
+$path | Directory path | String | Yes |
+
 ## License
 
 This project is licensed under Creative Commons Zero v1.0 Universal license. See the [LICENSE](https://github.com/morteza-jamali/acfile/blob/master/LICENSE) file for more info.

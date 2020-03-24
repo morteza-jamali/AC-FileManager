@@ -2,6 +2,9 @@
     namespace ACFile\Src;
 
     class File {
+        private static $directories = [];
+        private static $tree = [];
+
         public static function scanPath($path , $order = SCANDIR_SORT_ASCENDING) {
             return scandir($path , $order);
         }
@@ -152,8 +155,6 @@
             return rtrim($path , '\\');
         }
 
-        private static $directories = [];
-        private static $tree = [];
         public static function getDirectoryTree($path) {
             self::$directories[$path] = 'true';
             $files = self::getFiles($path);
@@ -174,6 +175,10 @@
                 }
             }
             return self::$tree;
+        }
+
+        public static function getBaseName($path) {
+            return basename($path);
         }
     }
 ?>
