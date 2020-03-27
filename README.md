@@ -1,5 +1,5 @@
 <h1 align="center">
-  ACFile
+  AC FileManager
 </h1>
 
 PHP library for file and directory management
@@ -12,7 +12,7 @@ This library is supported by PHP versions 5.6 or higher
 
 The preferred way to install this library is through [Composer](https://getcomposer.org/) :
 ```ssh
-composer require acide/acfile
+composer require acide/acfilemanager
 ```
 
 ## Quick Start
@@ -22,7 +22,7 @@ To use this library with Composer :
 ```php
 require __DIR__ . '/vendor/autoload.php';
 
-use ACFile\Src\File;
+use ACFileManager\Src\File;
 ```
 
 ## Available Methods
@@ -377,4 +377,4 @@ $path | Directory path | String | Yes |
 
 ## License
 
-This project is licensed under Creative Commons Zero v1.0 Universal license. See the [LICENSE](https://github.com/morteza-jamali/acfile/blob/master/LICENSE) file for more info.
+This project is licensed under Creative Commons Zero v1.0 Universal license. See the [LICENSE](https://github.com/morteza-jamali/AC-FileManager/blob/master/LICENSE) file for more info.

@@ -1,11 +1,11 @@
 {
-    "name": "acide/acfile",
-    "version": "1.0.0",
+    "name": "acide/acfilemanager",
+    "version": "2.0.0",
     "type": "library",
     "license" : "CC0-1.0" ,
     "description": "This is ACIDE project file manager library",
-    "keywords": ["acide" , "acfile" , "file manager"],
-    "homepage": "https://github.com/morteza-jamali/acfile",
+    "keywords": ["acide" , "acfilemanager" , "file manager"],
+    "homepage": "https://github.com/morteza-jamali/AC-FileManager",
     "authors": [
         {
             "name": "Morteza Jamali",
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ACFile\\": ""
+            "ACFileManager\\": ""
         }
     } ,
     "minimum-stability": "dev"

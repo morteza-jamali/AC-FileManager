@@ -1,5 +1,5 @@
 <?php
-    namespace ACFile\Src;
+    namespace ACFileManager\Src;
 
     class File {
         private static $directories = [];
