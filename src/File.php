@@ -156,6 +156,7 @@
         }
 
         public static function getDirectoryTree($path) {
+            $result = [];
             self::$directories[$path] = 'true';
             $files = self::getFiles($path);
             $dirs = self::getDirectories($path);
@@ -174,7 +175,13 @@
                     self::getDirectoryTree($directory);
                 }
             }
-            return self::$tree;
+            foreach (self::$tree as $t => $array) {
+                $result[$t] = [];
+                foreach ($array as $key => $value) {
+                    $result[$t][self::getBaseName($key)] = $value;
+                }
+            }
+            return $result;
         }
 
         public static function getBaseName($path) {

@@ -337,6 +337,32 @@ Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
 $path | Directory path | String | Yes |
 
+```text
+--- /root
+    |
+    |----- /src
+    |      |----- main.js
+    |      |----- home.js
+    |
+    |----- example.text
+    |----- simple.php 
+```
+
+The file manager returns the above file structure as follows :
+
+```php
+array (size=2)
+  '../root' => 
+    array (size=3)
+      'src' => string 'directory' (length=3)
+      'example.text' => string 'file' (length=12)
+      'simple.php' => string 'file' (length=10)
+  '../root/src' => 
+    array (size=2)
+      'main.js' => string 'file' (length=7)
+      'home.js' => string 'file' (length=7)
+```
+
 ```php
 File::getBaseName($path)
 ```
