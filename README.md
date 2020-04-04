@@ -2,6 +2,12 @@
   AC FileManager
 </h1>
 
+<p align="center">
+<img src="https://img.shields.io/badge/version-2.0.1-orange" alt="version">
+<img src="https://img.shields.io/badge/license-CC0--1.0-yellowgreen" alt="license">
+<img src="https://img.shields.io/badge/size-80%20KB-lightgrey" alt="size">
+</p>
+
 PHP library for file and directory management
 
 ## Requirements
@@ -374,6 +380,18 @@ getBaseName | Get path base name | String
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
 $path | Directory path | String | Yes |
+
+```php
+File::getFileContent($path)
+```
+
+Method | Description | Return
+-------|-------------|-------
+getFileContent | Returns file content | String
+
+Attribute | Description | Type | Required | Default
+----------|-------------|------|----------|---------
+$path | File path | String | Yes |
 
 ## License
 

@@ -187,5 +187,9 @@
         public static function getBaseName($path) {
             return basename($path);
         }
+
+        public static function getFileContent($path) {
+            return file_get_contents($path);
+        }
     }
 ?>
