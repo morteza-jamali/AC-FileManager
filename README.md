@@ -137,7 +137,7 @@ Attribute | Description | Type | Required | Default
 $path | Directory path | String | Yes |
 
 ```php
-File::emptyDirectory($path)
+File::emptyDirectory($path , $self_delete)
 ```
 
 Method | Description | Return
@@ -147,6 +147,7 @@ emptyDirectory | Delete all files and directories from directory | Boolean
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
 $path | Directory path | String | Yes |
+$self_delete | Delete directory itself | Boolean | No | False
 
 ```php
 File::makeDirectory($path , $mode)

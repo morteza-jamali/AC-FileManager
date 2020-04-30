@@ -60,12 +60,26 @@
             return false;
         }
 
-        public static function emptyDirectory($path) {
-            $path = self::cleanPath($path);
-            $files = glob("$path/{,.}*", GLOB_BRACE);
-            foreach($files as $file){
-                if(is_file($file))
-                    unlink($file);
+        public static function emptyDirectory($path , $self_delete = false) {
+            $dir_handle = null;
+
+            if (is_dir($path))
+                $dir_handle = opendir($path);
+
+            if (!$path)
+                return false;
+
+            while($file = readdir($dir_handle)) {
+                if ($file != "." && $file != "..") {
+                    if (!is_dir($path."/".$file))
+                        @unlink($path."/".$file);
+                    else
+                        self::emptyDirectory($path.'/'.$file,true);
+                }
+            }
+            closedir($dir_handle);
+            if ($self_delete){
+                @rmdir($path);
             }
             return true;
         }
