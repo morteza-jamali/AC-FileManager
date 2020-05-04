@@ -217,32 +217,28 @@ $from | From file path | String | Yes |
 $to | Destination file path | String | Yes |
 
 ```php
-File::rename($parent_path , $old_name , $new_name)
+File::rename($path , $new_name)
 ```
 
 Method | Description | Return
 -------|-------------|-------
-rename | Renames a file | Boolean
+rename | Renames a file or directory | Boolean
 
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
-$parent_path | Parent directory path | String | Yes |
-$old_name | Old name | String | Yes |
+$path | Directory or file path | String | Yes |
 $new_name | New name | String | Yes |
 
 __# A simple rename() example__
 
 ```php
 $result = rename(
-    '/path/tmp' ,
-    'File1.txt' ,
+    '/path/tmp/File1.txt' ,
     'File2.txt'
 );
 
 var_dump($result);
 ```
-
-Renames `File1.txt` file in `/path/tmp` directory to `File2.txt`
 
 ```php
 File::moveFile($from_dir , $to_dir , $name)

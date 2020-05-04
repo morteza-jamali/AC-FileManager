@@ -1,9 +1,9 @@
 {
     "name": "acide/acfilemanager",
-    "version": "2.0.1",
+    "version": "2.0.3",
     "type": "library",
     "license" : "CC0-1.0" ,
-    "description": "This is ACIDE project file manager library",
+    "description": "This is ACID-E project file manager library",
     "keywords": ["acide" , "acfilemanager" , "file manager"],
     "homepage": "https://github.com/morteza-jamali/AC-FileManager",
     "authors": [

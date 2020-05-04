@@ -5,6 +5,16 @@
         private static $directories = [];
         private static $tree = [];
 
+        private static function replaceLast($search, $replace, $subject) {
+            $pos = strrpos($subject, $search);
+
+            if($pos !== false) {
+                $subject = substr_replace($subject, $replace, $pos, strlen($search));
+            }
+
+            return $subject;
+        }
+
         public static function scanPath($path , $order = SCANDIR_SORT_ASCENDING) {
             return scandir($path , $order);
         }
@@ -123,13 +133,13 @@
             return copy($from, $to);
         }
 
-        public static function rename($parent_path , $old_name , $new_name) {
-            $parent_path = self::cleanPath($parent_path);
-            if(!self::exists("$parent_path/$old_name")) {
-                return false;
-            }
+        public static function rename($path , $new_name) {
+            $path = self::cleanPath($path);
 
-            return rename("$parent_path/$old_name" , "$parent_path/$new_name");
+            return rename(
+                $path ,
+                self::replaceLast(basename($path) , '' , $path) . $new_name
+            );
         }
 
         public static function moveFile($from_dir , $to_dir , $name) {
