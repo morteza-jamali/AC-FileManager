@@ -1,6 +1,6 @@
 {
     "name": "acide/acfilemanager",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "type": "library",
     "license" : "CC0-1.0" ,
     "description": "This is ACID-E project file manager library",

@@ -114,6 +114,8 @@
         }
 
         public static function copyDirectoryRecursively($from , $to) {
+            $to = $to . DIRECTORY_SEPARATOR . self::getBaseName($from);
+            self::makeDirectory($to);
             $dir = opendir($from);
             @mkdir($to);
             while(false !== ($file = readdir($dir)) ) {
