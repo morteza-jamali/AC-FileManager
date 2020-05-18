@@ -113,15 +113,17 @@
             return true;
         }
 
-        public static function copyDirectoryRecursively($from , $to) {
-            $to = $to . DIRECTORY_SEPARATOR . self::getBaseName($from);
-            self::makeDirectory($to);
+        public static function copyDirectoryRecursively($from , $to , $create_base = true) {
+            if($create_base) {
+                $to = $to . DIRECTORY_SEPARATOR . self::getBaseName($from);
+                self::makeDirectory($to);
+            }
             $dir = opendir($from);
             @mkdir($to);
             while(false !== ($file = readdir($dir)) ) {
                 if (( $file != '.' ) && ($file != '..' )) {
                     if (is_dir($from . '/' . $file)) {
-                        self::copyDirectoryRecursively($from . '/' . $file,$to . '/' . $file);
+                        self::copyDirectoryRecursively($from . '/' . $file,$to . '/' . $file , false);
                     }
                     else {
                         copy($from . '/' . $file,$to . '/' . $file);
