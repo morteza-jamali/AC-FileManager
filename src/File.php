@@ -121,7 +121,7 @@
             while(false !== ($file = readdir($dir)) ) {
                 if (( $file != '.' ) && ($file != '..' )) {
                     if (is_dir($from . '/' . $file)) {
-                        self::copyDirectory($from . '/' . $file,$to . '/' . $file);
+                        self::copyDirectoryRecursively($from . '/' . $file,$to . '/' . $file);
                     }
                     else {
                         copy($from . '/' . $file,$to . '/' . $file);
