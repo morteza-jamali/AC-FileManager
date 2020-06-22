@@ -1,6 +1,6 @@
 {
     "name": "acide/acfilemanager",
-    "version": "2.0.5",
+    "version": "2.0.6",
     "type": "library",
     "license" : "CC0-1.0" ,
     "description": "This is ACID-E project file manager library",
@@ -10,7 +10,7 @@
         {
             "name": "Morteza Jamali",
             "email": "mortezajamali4241@gmail.com",
-            "homepage": "https://abricoder.com",
+            "homepage": "https://morteza-jamali.github.io",
             "role": "Developer"
         }
     ],
