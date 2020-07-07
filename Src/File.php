@@ -70,7 +70,7 @@
             return false;
         }
 
-        public static function emptyDirectory($path , $self_delete = false) {
+        public static function emptyDirectory($path , $except = [] , $self_delete = false) {
             $dir_handle = null;
 
             if (is_dir($path))
@@ -80,11 +80,11 @@
                 return false;
 
             while($file = readdir($dir_handle)) {
-                if ($file != "." && $file != "..") {
+                if ($file != "." && $file != ".." && !in_array($path."/".$file , $except)) {
                     if (!is_dir($path."/".$file))
                         @unlink($path."/".$file);
                     else
-                        self::emptyDirectory($path.'/'.$file,true);
+                        self::emptyDirectory($path.'/'.$file, $except , true);
                 }
             }
             closedir($dir_handle);

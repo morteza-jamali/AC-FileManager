@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-<img src="https://img.shields.io/badge/version-2.0.7-orange" alt="version">
+<img src="https://img.shields.io/badge/version-2.0.8-orange" alt="version">
 <img src="https://img.shields.io/badge/license-CC0--1.0-yellowgreen" alt="license">
 <img src="https://img.shields.io/badge/size-80%20KB-lightgrey" alt="size">
 </p>
@@ -137,7 +137,7 @@ Attribute | Description | Type | Required | Default
 $path | Directory path | String | Yes |
 
 ```php
-File::emptyDirectory($path , $self_delete)
+File::emptyDirectory($path , $except , $self_delete)
 ```
 
 Method | Description | Return
@@ -148,6 +148,15 @@ Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
 $path | Directory path | String | Yes |
 $self_delete | Delete directory itself | Boolean | No | False
+$except | Doesn't remove these files and directories | Array | No | []
+
+__# A simple emptyDirectory() example__
+```php
+File::emptyDirectory('/to/path/sample' , [
+    '/to/path/sample/Application' ,
+    '/to/path/sample/webpack.config.js'
+]);
+```
 
 ```php
 File::makeDirectory($path , $mode)
