@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-<img src="https://img.shields.io/badge/version-2.0.5-orange" alt="version">
+<img src="https://img.shields.io/badge/version-2.0.7-orange" alt="version">
 <img src="https://img.shields.io/badge/license-CC0--1.0-yellowgreen" alt="license">
 <img src="https://img.shields.io/badge/size-80%20KB-lightgrey" alt="size">
 </p>
