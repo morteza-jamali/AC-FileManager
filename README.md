@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-<img src="https://img.shields.io/badge/version-2.0.8-orange" alt="version">
+<img src="https://img.shields.io/badge/version-2.0.9-orange" alt="version">
 <img src="https://img.shields.io/badge/license-CC0--1.0-yellowgreen" alt="license">
 <img src="https://img.shields.io/badge/size-80%20KB-lightgrey" alt="size">
 </p>
@@ -336,6 +336,28 @@ echo $result;
 ```
 
 Result is `path/tmp`
+
+```php
+File::fixPath($path)
+```
+
+Method | Description | Return
+-------|-------------|-------
+fixPath | Fixes path string problems | String
+
+Attribute | Description | Type | Required | Default
+----------|-------------|------|----------|---------
+$path | File or directory path | String | Yes |
+
+__# A simple fixPath() example in Linux OS__
+
+```php
+$result = File::fixPath('var/www/html/acide\images\test.png');
+
+echo $result;
+```
+
+Result is `var/www/html/acide/images/test.png`
 
 ```php
 File::getDirectoryTree($path)

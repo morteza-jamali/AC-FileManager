@@ -183,6 +183,13 @@
             return rtrim($path , '\\');
         }
 
+        public static function fixPath($path) {
+            return self::cleanPath(str_replace(
+                DIRECTORY_SEPARATOR === '/' ? '\\' : '/' ,
+                DIRECTORY_SEPARATOR ,
+                $path));
+        }
+
         public static function getDirectoryTree($path) {
             $result = [];
             self::$directories[$path] = 'true';
