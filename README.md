@@ -3,9 +3,9 @@
 </h1>
 
 <p align="center">
-<img src="https://img.shields.io/badge/version-2.0.9-orange" alt="version">
+<img src="https://img.shields.io/badge/version-2.1.0-orange" alt="version">
 <img src="https://img.shields.io/badge/license-CC0--1.0-yellowgreen" alt="license">
-<img src="https://img.shields.io/badge/size-80%20KB-lightgrey" alt="size">
+<img src="https://img.shields.io/badge/size-120%20KB-lightgrey" alt="size">
 </p>
 
 PHP library for file and directory management
@@ -87,7 +87,7 @@ print_r($result);
 Lists all files and directories in `/path/tmp` and removes `readme.txt` file and `sources` directory from result
 
 ```php
-File::getFiles($path , $order)
+File::getFiles($path , $regex , $order)
 ```
 
 Method | Description | Return
@@ -97,10 +97,11 @@ getFiles | Lists all files in a path | Array
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
 $path | Directory path | String | Yes |
+$regex | Regex for matching file name | String | No | null
 $order | Sorting order | Int | No | SCANDIR_SORT_ASCENDING
 
 ```php
-File::getDirectories($path , $order)
+File::getDirectories($path , $regex , $order)
 ```
 
 Method | Description | Return
@@ -110,6 +111,7 @@ getDirectories | Lists all directories in a path | Array
 Attribute | Description | Type | Required | Default
 ----------|-------------|------|----------|---------
 $path | Directory path | String | Yes |
+$regex | Regex for matching directory name | String | No | null
 $order | Sorting order | Int | No | SCANDIR_SORT_ASCENDING
 
 ```php

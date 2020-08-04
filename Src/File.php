@@ -23,26 +23,38 @@
             return array_diff(self::scanPath($path , $order), $filters);
         }
 
-        public static function getFiles($path , $order = SCANDIR_SORT_ASCENDING) {
+        public static function getFiles($path , $regex = null , $order = SCANDIR_SORT_ASCENDING) {
             $result = [];
             $scan = self::filterScan($path , ['..' , '.'] , $order);
             foreach ($scan as $key => $value) {
                 if (!is_dir($path . DIRECTORY_SEPARATOR . $value))
                 {
-                    $result[$key] = $path . DIRECTORY_SEPARATOR . $value;
+                    if(isset($regex) && !empty($regex)) {
+                        if(preg_match($regex , $value)) {
+                            $result[$key] = $path . DIRECTORY_SEPARATOR . $value;
+                        }
+                    } else {
+                        $result[$key] = $path . DIRECTORY_SEPARATOR . $value;
+                    }
                 }
             }
 
             return $result;
         }
 
-        public static function getDirectories($path , $order = SCANDIR_SORT_ASCENDING) {
+        public static function getDirectories($path , $regex = null , $order = SCANDIR_SORT_ASCENDING) {
             $result = [];
             $scan = self::filterScan($path , ['..' , '.'] , $order);
             foreach ($scan as $key => $value) {
                 if (is_dir($path . DIRECTORY_SEPARATOR . $value))
                 {
-                    $result[$key] = $path . DIRECTORY_SEPARATOR . $value;
+                    if(isset($regex) && !empty($regex)) {
+                        if(preg_match($regex , $value)) {
+                            $result[$key] = $path . DIRECTORY_SEPARATOR . $value;
+                        }
+                    } else {
+                        $result[$key] = $path . DIRECTORY_SEPARATOR . $value;
+                    }
                 }
             }
 
