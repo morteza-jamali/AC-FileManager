@@ -1,6 +1,13 @@
 <?php
     namespace ACFileManager\Src;
 
+    if(!defined('FULL_DEPTH')) {
+        define('FULL_DEPTH' , 1);
+    }
+    if(!defined('CURRENT_DEPTH')) {
+        define('CURRENT_DEPTH' , 0);
+    }
+
     class File {
         private static $directories = [];
         private static $tree = [];
@@ -23,18 +30,38 @@
             return array_diff(self::scanPath($path , $order), $filters);
         }
 
-        public static function getFiles($path , $regex = null , $order = SCANDIR_SORT_ASCENDING) {
+        public static function getFiles($path , $regex = null , $depth = CURRENT_DEPTH , $order = SCANDIR_SORT_ASCENDING) {
+            $directories_list = [$path => false];
             $result = [];
-            $scan = self::filterScan($path , ['..' , '.'] , $order);
-            foreach ($scan as $key => $value) {
-                if (!is_dir($path . DIRECTORY_SEPARATOR . $value))
-                {
-                    if(isset($regex) && !empty($regex)) {
-                        if(preg_match($regex , $value)) {
-                            $result[$key] = $path . DIRECTORY_SEPARATOR . $value;
+
+            $listDirectories = function() use (&$directories_list , &$listDirectories) {
+                foreach($directories_list as $directory => $status) {
+                    if(!$status) {
+                        foreach(self::getDirectories($directory) as $dir) {
+                            $directories_list[$dir] = false;
                         }
-                    } else {
-                        $result[$key] = $path . DIRECTORY_SEPARATOR . $value;
+                        $directories_list[$directory] = true;
+                        $listDirectories();
+                    }
+                }
+            };
+
+            if($depth === FULL_DEPTH) {
+                $listDirectories();
+            }
+
+            foreach($directories_list as $p => $status) {
+                $scan = self::filterScan($p , ['..' , '.'] , $order);
+                foreach ($scan as $key => $value) {
+                    if (!is_dir($p . DIRECTORY_SEPARATOR . $value))
+                    {
+                        if(isset($regex) && !empty($regex)) {
+                            if(preg_match($regex , $value)) {
+                                array_push($result , $p . DIRECTORY_SEPARATOR . $value);
+                            }
+                        } else {
+                            array_push($result , $p . DIRECTORY_SEPARATOR . $value);
+                        }
                     }
                 }
             }
@@ -42,19 +69,39 @@
             return $result;
         }
 
-        public static function getDirectories($path , $regex = null , $order = SCANDIR_SORT_ASCENDING) {
+        public static function getDirectories($path , $regex = null , $depth = CURRENT_DEPTH , $order = SCANDIR_SORT_ASCENDING) {
+            $directories_list = [$path => false];
             $result = [];
-            $scan = self::filterScan($path , ['..' , '.'] , $order);
-            foreach ($scan as $key => $value) {
-                if (is_dir($path . DIRECTORY_SEPARATOR . $value))
-                {
-                    if(isset($regex) && !empty($regex)) {
-                        if(preg_match($regex , $value)) {
-                            $result[$key] = $path . DIRECTORY_SEPARATOR . $value;
+
+            $listDirectories = function() use (&$directories_list , &$listDirectories , $order , $path , $depth) {
+                foreach($directories_list as $directory => $status) {
+                    if(!$status) {
+                        $scan = self::filterScan($directory , ['..' , '.'] , $order);
+                        foreach ($scan as $key => $value) {
+                            if (is_dir($directory . DIRECTORY_SEPARATOR . $value))  {
+                                $directories_list[$directory . DIRECTORY_SEPARATOR . $value] = false;
+                            }
                         }
-                    } else {
-                        $result[$key] = $path . DIRECTORY_SEPARATOR . $value;
+                        if($directory === $path) {
+                            unset($directories_list[$directory]);
+                        } else {
+                            $directories_list[$directory] = true;
+                        }
+                        if($depth === FULL_DEPTH) {
+                            $listDirectories();
+                        }
                     }
+                }
+            };
+            $listDirectories();
+
+            foreach($directories_list as $d => $status) {
+                if(isset($regex) && !empty($regex)) {
+                    if(preg_match($regex , basename($d))) {
+                        array_push($result , $d);
+                    }
+                } else {
+                    array_push($result , $d);
                 }
             }
 
